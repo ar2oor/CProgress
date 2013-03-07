@@ -144,10 +144,11 @@
 			      
 			      if(base.options.percent<=base.options.limit){
 				   setTimeout(base.methods.draw,base.options.speed);
-				   base.$percent.html(base.options.percent.toFixed(0));
+				   base.$percent.html(base.options.percentageDisplay(base.options.percent));
 
 				   base.options.onProgress(base.options.percent.toFixed(0));
 			      }else{
+			       base.$percent.html(base.options.percentageDisplay(base.options.limit));
 				   base.$percent.html(base.options.limit);
 				   base.methods.coreDraw();
 				   base.options.onProgress(base.options.limit);
@@ -216,7 +217,8 @@
 	  //Funs
 	  onInit : function(){},
 	  onProgress : function(percent){},
-	  onComplete : function(){}
+	  onComplete : function(){},
+	  percentageDisplay: function(percent) { return percent.toFixed(0); }
      };
      
      $.fn.cprogress = function( options) {

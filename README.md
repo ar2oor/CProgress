@@ -14,6 +14,7 @@ A jQuery plugin that makes circular progress bar in selected element.
 * Infinite loop
 * Skinnable
 * Show percentage
+* Customizable percentage display
 * Execute functions on Init, Every Step, Complete
 
 ### Methods
