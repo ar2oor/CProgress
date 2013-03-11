@@ -69,7 +69,8 @@
 		    base.ctx.fillStyle = "rgba(0,0,0,0.0)";		   
 		   
 		    //others
-		    base.i=0;
+		    base.percent = base.options.percent;
+		    base.i = base.percent /100*(Math.PI*2);
 		    base.j=0;
 		    base.stop = 0;
 		    
@@ -126,25 +127,25 @@
 
 			 }
 
-			 if(base.stop!=1 && (base.options.percent-1)<=base.options.limit){
+			 if(base.stop!=1 && (base.percent-1)<=base.options.limit){
 
 			      if(base.options.loop==true){
 				   base.options.limit=121;
 			      }
-			      if(base.options.percent>=100 && base.options.percent<=base.options.limit){
+			      if(base.percent>=100 && base.percent<=base.options.limit){
 				   base.i=0;
 				   base.options.limit=base.options.limit-100;
 			      }
 		    
 			      base.methods.coreDraw();
 
-			      base.i=base.i+base.options.PIStep;
+			      base.i += base.options.PIStep;
 
-			      base.options.percent = base.i*100/(Math.PI*2);
+			      base.percent = base.i *100/(Math.PI*2);
 			      
-			      if(base.options.percent<=base.options.limit){
+			      if(base.percent<=base.options.limit){
 				   setTimeout(base.methods.draw,base.options.speed);
-				   base.$percent.html(base.options.percentageDisplay(base.options.percent));
+				   base.$percent.html(base.options.percentageDisplay(base.percent));
 
 				   base.options.onProgress(base.options.percent.toFixed(0));
 			      }else{
@@ -154,7 +155,7 @@
 				   base.options.onComplete(base.options.limit);
 			      }
 			      
-			      base.options.percent++;
+			      base.percent++;
 			 }
 		    }
 
@@ -180,7 +181,7 @@
 
 	       },
 	       reset : function(){
-		    base.options.percent =0;
+		    base.percent = base.options.percent;
 		    base.i=0;
 		    base.methods.draw();
 	       },
