@@ -149,7 +149,6 @@
 				   base.options.onProgress(base.options.percent.toFixed(0));
 			      }else{
 			       base.$percent.html(base.options.percentageDisplay(base.options.limit));
-				   base.$percent.html(base.options.limit);
 				   base.methods.coreDraw();
 				   base.options.onProgress(base.options.limit);
 				   base.options.onComplete(base.options.limit);
